@@ -1,0 +1,26 @@
+{
+  "search": {
+    "product": "bicycle",
+    "countries": [
+      "USANEW",
+      "VN",
+      "PH",
+      "IDN"
+    ],
+    "recordsPerPage": 1000,
+    "startDate": "2016-11-01",
+    "endDate": "2017-11-10",
+    "sleepTime": 23000
+  },
+  "database": {
+    "user": "postgres",
+    "host": "localhost",
+    "database": "lsmaps",
+    "password": "workhard",
+    "port": 5432
+  },
+  "lsmaps": {
+    "user": "xx@xx.com",
+    "password": "2bd3b230"
+  }
+}
