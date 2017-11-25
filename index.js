@@ -21,6 +21,7 @@ async function wait(time) {
 }
 
 ;(async () => {
+  await db.createTradeTable(cfg.database.tableName)
   for (let c = 0; c < countries.length; c += 1) {
     const country = countries[c]
     const monthStep = country === 'USANEW' ? 1 : 7
@@ -33,6 +34,7 @@ async function wait(time) {
     }
 
     while (overDate.format('YYYY-MM-DD') >= beginDate.format('YYYY-MM-DD')) {
+      console.log('\n===================================')
       console.log(`query from ${beginDate.format('YYYY-MM-DD')} to ${overDate.format('YYYY-MM-DD')}`)
       const jsonData = await searchTrade(
         product,
@@ -71,7 +73,7 @@ async function wait(time) {
         console.log(`get ${records} records by current query`)
         try {
           await db.saveTrades2DB(data.Trade)
-          console.log(`pagePager: ${pageIndex}/${pagePager} done.`)
+          console.log(`${beginDate.format('YY-MM-DD')} to ${overDate.format('YY-MM-DD')}, pagePager: ${pageIndex}/${pagePager} done.`)
         } catch (err) {
           console.log(err.stack)
         }

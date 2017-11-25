@@ -1,6 +1,6 @@
 {
   "search": {
-    "product": "bicycle",
+    "product": "computer",
     "startPage": 1,
     "countries": [
       "USANEW",
@@ -11,18 +11,18 @@
     "recordsPerPage": 1000,
     "startDate": "2016-11-01",
     "endDate": "2017-11-10",
-    "sleepTime": 23000
+    "sleepTime": 2000
   },
   "database": {
     "user": "postgres",
     "host": "localhost",
     "database": "lsmaps",
-    "tableName": "trades",
+    "tableName": "computer",
     "password": "workhard",
     "port": 5432
   },
   "lsmaps": {
-    "user": "xx@xx.com",
+    "user": "",
     "password": "2bd3b230"
   }
 }
