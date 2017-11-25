@@ -1,6 +1,7 @@
 {
   "search": {
     "product": "bicycle",
+    "startPage": 1,
     "countries": [
       "USANEW",
       "VN",
@@ -16,6 +17,7 @@
     "user": "postgres",
     "host": "localhost",
     "database": "lsmaps",
+    "tableName": "trades",
     "password": "workhard",
     "port": 5432
   },

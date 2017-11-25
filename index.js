@@ -8,6 +8,7 @@ const cfg = fs.readJsonSync(path.join(__dirname, './config.json'))
 
 const {
   product,
+  startPage,
   countries,
   recordsPerPage,
   startDate,
@@ -28,7 +29,7 @@ async function wait(time) {
     let beginDate = moment(startDate, 'YYYY-MM-DD')
     let overDate = moment(beginDate).add(monthStep, 'month')
     if (overDate.format('YYYY-MM-DD') > endDate) {
-      overDate = endDate
+      overDate = moment(endDate, 'YYYY-MM-DD')
     }
 
     while (overDate.format('YYYY-MM-DD') >= beginDate.format('YYYY-MM-DD')) {
@@ -47,7 +48,7 @@ async function wait(time) {
       const pagePager = Math.ceil(pageTotal / recordsPerPage)
       console.log(`pagePager: ${pagePager}`)
 
-      for (let pageIndex = 1; pageIndex <= pagePager; pageIndex += 1) {
+      for (let pageIndex = startPage || 1; pageIndex <= pagePager; pageIndex += 1) {
         console.log(`${country}, ${pageIndex}/${pagePager}`)
 
         const isSafe = await checkSafe(cookiesStr)
