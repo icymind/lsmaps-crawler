@@ -13,6 +13,7 @@ const {
   recordsPerPage,
   startDate,
   endDate,
+  daysPerQuery,
   sleepTime,
 } = cfg.search
 
@@ -24,11 +25,11 @@ async function wait(time) {
   await db.createTradeTable(cfg.database.tableName)
   for (let c = 0; c < countries.length; c += 1) {
     const country = countries[c]
-    const monthStep = country === 'USANEW' ? 1 : 7
+    const daysStep = country === 'USANEW' ? daysPerQuery : daysPerQuery * 10
     let cookiesStr = await getCookies()
 
     let beginDate = moment(startDate, 'YYYY-MM-DD')
-    let overDate = moment(beginDate).add(monthStep, 'month')
+    let overDate = moment(beginDate).add(daysStep, 'day')
     if (overDate.format('YYYY-MM-DD') > endDate) {
       overDate = moment(endDate, 'YYYY-MM-DD')
     }
@@ -45,6 +46,8 @@ async function wait(time) {
         1,
         10,
       )
+
+      // console.log(jsonData)
 
       const pageTotal = jsonData.PageTotal
       const pagePager = Math.ceil(pageTotal / recordsPerPage)
@@ -87,7 +90,7 @@ async function wait(time) {
       }
 
       beginDate = moment(overDate).add(1, 'days')
-      overDate = moment(beginDate).add(monthStep, 'month')
+      overDate = moment(beginDate).add(daysStep, 'day')
       if (overDate.format('YYYY-MM-DD') > endDate) {
         overDate = endDate
       }

@@ -1,6 +1,6 @@
 {
   "search": {
-    "product": "computer",
+    "product": "light",
     "startPage": 1,
     "countries": [
       "USANEW",
@@ -11,6 +11,7 @@
     "recordsPerPage": 1000,
     "startDate": "2016-11-01",
     "endDate": "2017-11-10",
+    "daysPerQuery": 10,
     "sleepTime": 2000
   },
   "database": {
